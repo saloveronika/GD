@@ -1,0 +1,29 @@
+
+
+<%= form_for [@step,@variant] do |f| %>
+
+  <% if @variant.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@variant.errors.count, "error") %> prohibited this variant from being saved:</h2>
+
+      <ul>
+      <% @variant.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :body %><br />
+    <%= f.text_area :body %>
+  </div>
+ 
+  <div class="field">
+    <%= f.label :next_step_id %><br />
+    <%= f.select :next_step_id, @quest.steps.map {|c| [c.title, c.id]}, :prompt=>"--Виберіть наступний крок--"  %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

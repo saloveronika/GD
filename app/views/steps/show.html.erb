@@ -1,0 +1,35 @@
+
+<%=  render "shared/sidebar_content" %> 
+
+ <%= image_tag @step.photo.url(:medium) if @step.photo.exists? %>
+
+<p>
+  <b>Description:</b>
+  <%= @step.description %>
+</p>
+
+<p>
+  <b>Result:</b>
+  <%= @step.result %>
+</p>
+
+<p>
+  <b>Video:</b>
+  <%= @step.video %>
+</p>
+
+<p>
+  <b>Quest:</b>
+  <%= @step.quest_id %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%= @step.title %>
+</p>
+
+
+<%= link_to 'Edit', edit_quest_step_path(@quest, @step) %> |
+<%= link_to 'Back', quest_steps_path(@quest) %> |
+<%= link_to 'Додати варіант', new_step_variant_path(@step) %>|
+
